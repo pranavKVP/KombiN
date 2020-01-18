@@ -75,6 +75,7 @@ namespace AlgoKombiN
                         break;
                 }
             }
+            if (zeroBasedIndex) { Index--; }
             return Index;
         }
 
@@ -84,6 +85,7 @@ namespace AlgoKombiN
                                           out ulong X, out ulong Y,
                                           bool zeroBasedIndex = true)
         {
+            if (zeroBasedIndex) { Index++; }
             GetAbstract(XLength, YLength,
                         out ulong S1, out ulong S2, out ulong S3,
                         out ulong I1, out ulong I2, out ulong I3,
