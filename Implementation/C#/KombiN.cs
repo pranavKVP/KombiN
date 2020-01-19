@@ -37,7 +37,7 @@ namespace AlgoKombiN
         //Get Index value for Combination values
         public static ulong GetIndex(ulong X, ulong Y,
                                     ulong XLength, ulong YLength,
-                                    bool zeroBasedIndex = true)
+                                    bool zeroBasedIndex)
         {
             if (zeroBasedIndex) { X++; Y++; }
             GetAbstract(XLength, YLength,
@@ -83,7 +83,7 @@ namespace AlgoKombiN
         public static void GetCombination(ulong Index,
                                           ulong XLength, ulong YLength,
                                           out ulong X, out ulong Y,
-                                          bool zeroBasedIndex = true)
+                                          bool zeroBasedIndex)
         {
             if (zeroBasedIndex) { Index++; }
             GetAbstract(XLength, YLength,
