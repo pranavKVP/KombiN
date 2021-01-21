@@ -5,15 +5,15 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="KombiN",
-    version="1.0.0-alpha",
+    version="1.0.0",
     author="Pranavkumar Patel",
     author_email="pranavkvp@theyei.com",
     description="Indexing combinations from two finite sets.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pranav-ninja/KombiN/tree/master/python",
+    url="https://pranav-ninja.github.io/KombiN/",
     packages=setuptools.find_packages(),
-    license="MIT License",
+    license="MIT",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
