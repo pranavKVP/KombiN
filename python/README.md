@@ -3,7 +3,7 @@ This is the python implementation of KombiN, which is an algorithm to get index 
 
 ## Installation:
 ````
-pip install kombin
+pip install KombiN
 ````
 
 ## Usage:
