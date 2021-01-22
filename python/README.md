@@ -9,7 +9,7 @@ pip install KombiN
 ## Usage:
 ##### *where set 'A' has 100 elements and set 'B' has 80 elements and both sets has zerobased indexing*.
 ````
-from KombiN.KombiN import KombiN
+from KombiN import KombiN
 
 
 myObj = KombiN(100, 80, True)
