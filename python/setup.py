@@ -7,7 +7,7 @@ setuptools.setup(
     name="KombiN",
     version="1.0.2",
     author="Pranavkumar Patel",
-    author_email="pranavkvp@theyei.com",
+    author_email="code@pranav.ninja",
     description="Indexing combinations from two finite sets.",
     long_description=long_description,
     long_description_content_type="text/markdown",
