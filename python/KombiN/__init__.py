@@ -1,1 +1,1 @@
-from KombiN.KombiN import *
+from .KombiN import KombiN
