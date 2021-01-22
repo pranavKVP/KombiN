@@ -1,21 +1,14 @@
 """KombiN is an algorithm to get index for pair of combination or
 to get pair of combination from index, where all possible pairs
 of combination from two finite sets are sorted by their weight
-in ascending order.
-
-Usage:
-
-"""
-
-
+in ascending order."""
 import math
 
 
 class KombiN:
 
     def __init__(self, lengthOfA: int, lengthOfB: int, zeroBasedIndex: bool):
-        """Initializes KombiN object.
-
+        """
         Args:
             lengthOfA: Number of elements in first set.
             lengthOfB: Number of elements in second set.
