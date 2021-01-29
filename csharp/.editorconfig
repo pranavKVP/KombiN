@@ -1,0 +1,26 @@
+# see https://aka.ms/editorconfigdocs
+
+root = true
+
+# C# files
+[*.cs]
+
+#### Core EditorConfig Options ####
+
+# Indentation and spacing
+indent_size = 4
+indent_style = space
+tab_width = 4
+
+# New line preferences
+end_of_line = crlf
+insert_final_newline = false
+
+# Default severity for analyzer diagnostics (escalated to build warnings)
+dotnet_analyzer_diagnostic.severity = warning
+
+# IDE0047: Parentheses can be removed
+dotnet_diagnostic.IDE0047.severity = silent
+
+# IDE0048: Parentheses should be added for clarity
+dotnet_diagnostic.IDE0048.severity = silent
