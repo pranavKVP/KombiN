@@ -1,11 +1,11 @@
-"""KombiN is an algorithm to get index for pair of combination or
-to get pair of combination from index, where all possible pairs
-of combination from two finite sets are sorted by their weight
+"""KombiN is an algorithm to get index for combination pair or
+to get combination pair from index, where all possible
+combination pairs from two finite sets are sorted by their weight
 in ascending order."""
 import math
 
 
-class KombiN:
+class Table:
 
     def __init__(self, lengthOfA: int, lengthOfB: int, zeroBasedIndex: bool):
         """
@@ -17,162 +17,147 @@ class KombiN:
         if (lengthOfA < 1 or lengthOfB < 1):
             raise ValueError("Length of both sets must be grater than 0.")
 
-        self._lengthOfA = lengthOfA
-        self._lengthOfB = lengthOfB
-        self._zeroBasedIndex = zeroBasedIndex
+        self._LengthOfA = lengthOfA
+        self._LengthOfB = lengthOfB
+        self._ZeroBasedIndex = zeroBasedIndex
+        self._LowerLength = 0
+        self._MaxSumRange1 = self._MaxSumRange2 = self._MaxSumRange3 = 0
+        self._MaxIndexRange1 = self._MaxIndexRange2 = self._MaxIndexRange3 = 0
+        self._Abstract()
 
-        self._lowerLength, self._maxSumRange1, self._maxSumRange2, self._maxSumRange3, \
-            self._maxIndexRange1, self._maxIndexRange2, self._maxIndexRange3 = self._Abstract(lengthOfA, lengthOfB)
-
-    def _Abstract(self, lengthOfA: int, lengthOfB: int):
-        """Get an abstract values useful to get index and pair of combination.
+    def _Abstract(self) -> None:
+        """Sets an abstract values useful to get index and combination pair.
 
         Args:
-            lengthOfA: Number of elements in first set.
-            lengthOfB: Number of elements in second set.
+            None
 
         Returns:
-            lowerLength: Lower value from lengthOfA and lengthOfB.
-            maxSumRange1: Maximum value of Sum in range 1.
-            maxSumRange2: Maximum value of Sum in range 2.
-            maxSumRange3: Maximum value of Sum in range 3.
-            maxIndexRange1: Maximum value of Index in range 1.
-            maxIndexRange2: Maximum value of Index in range 2.
-            maxIndexRange3: Maximum value of Index in range 3.
+            None
         """
-        lowerLength = lengthOfA if (lengthOfA < lengthOfB) else lengthOfB
-        higherLength = lengthOfA if (lengthOfA > lengthOfB) else lengthOfB
-        difference = higherLength - lowerLength
-        product = higherLength * lowerLength
-        sum = higherLength + lowerLength
-
-        maxSumRange1 = lowerLength + 1
-        maxSumRange2 = maxSumRange3 = maxIndexRange1 = maxIndexRange2 \
-            = maxIndexRange3 = 0
-
+        self._LowerLength = self._LengthOfA if (self._LengthOfA < self._LengthOfB) else self._LengthOfB
+        higherLength = self._LengthOfA if (self._LengthOfA > self._LengthOfB) else self._LengthOfB
+        difference = higherLength - self._LowerLength
+        product = higherLength * self._LowerLength
+        sum = higherLength + self._LowerLength
+        self._MaxSumRange1 = self._LowerLength + 1
         if(difference == 0):
-            maxIndexRange1 = (product * maxSumRange1) // sum
+            self._MaxIndexRange1 = (product * self._MaxSumRange1) // sum
         elif(difference == 1):
-            maxIndexRange1 = product // 2
+            self._MaxIndexRange1 = product // 2
         elif(difference >= 2):
-            maxSumRange2 = higherLength
-            maxIndexRange1 = (product - lowerLength * (sum - 1 - 2 * lowerLength)) // 2
-            maxIndexRange2 = (product + lowerLength * (sum - 1 - 2 * lowerLength)) // 2
+            self._MaxSumRange2 = higherLength
+            self._MaxIndexRange1 = (product - self._LowerLength * (sum - 1 - 2 * self._LowerLength)) // 2
+            self._MaxIndexRange2 = (product + self._LowerLength * (sum - 1 - 2 * self._LowerLength)) // 2
 
         if(product >= 2):
-            maxSumRange3 = sum
-            maxIndexRange3 = product
+            self._MaxSumRange3 = sum
+            self._MaxIndexRange3 = product
 
-        return lowerLength, maxSumRange1, maxSumRange2, maxSumRange3, \
-            maxIndexRange1, maxIndexRange2, maxIndexRange3
-
-    def GetIndex(self, Ai: int, Bi: int) -> int:
-        """Get index value for the pair of combination.
+    def GetIndexOfElements(self, ai: int, bi: int) -> int:
+        """Get index value for the combination pair.
 
         Args:
-            Ai: Element index of set A.
-            Bi: Element index of set B.
+            ai: Element index of set A.
+            ai: Element index of set B.
 
         Returns:
-            Index: Index value for the given pair of combination.
+            Index value for the given combination pair.
         """
-        if(self._zeroBasedIndex):
-            if(Ai < 0 or Bi < 0):
+        if(self._ZeroBasedIndex):
+            if(ai < 0 or bi < 0):
                 raise ValueError("Both element index values must be 0 or more.")
-            Ai += 1
-            Bi += 1
-        else:
-            if(Ai < 1 or Bi < 1):
-                raise ValueError("Both element index values must be 1 or more.")
+            ai += 1
+            bi += 1
+        elif(ai < 1 or bi < 1):
+            raise ValueError("Both element index values must be 1 or more.")
 
-        Index = 0
+        index = 0
         previousIndex = 0
-        Sum = Ai + Bi
+        sum = ai + bi
 
-        if(Sum <= self._maxSumRange1):
-            previousIndex = Sum - 2
-            Index = ((previousIndex // 2) * (previousIndex + 1) if (previousIndex % 2 == 0) else \
+        if(sum <= self._MaxSumRange1):
+            previousIndex = sum - 2
+            index = ((previousIndex // 2) * (previousIndex + 1) if (previousIndex % 2 == 0) else \
                      (((previousIndex - 1) // 2) * previousIndex) + previousIndex) \
-                + Ai
-        elif(Sum <= self._maxSumRange2):
-            Index = self._maxIndexRange1 \
-                + ((Sum - (self._maxSumRange1 + 1)) * self._lowerLength) \
-                + (Ai if (self._lengthOfA < self._lengthOfB) else (self._lengthOfB + 1) - Bi)
-        elif(Sum <= self._maxSumRange3):
-            previousIndex = self._maxSumRange3 - Sum + 1
-            Index = self._maxIndexRange3 \
+                + ai
+        elif(sum <= self._MaxSumRange2):
+            index = self._MaxIndexRange1 \
+                + ((sum - (self._MaxSumRange1 + 1)) * self._LowerLength) \
+                + (ai if (self._LengthOfA < self._LengthOfB) else (self._LengthOfB + 1) - bi)
+        elif(sum <= self._MaxSumRange3):
+            previousIndex = self._MaxSumRange3 - sum + 1
+            index = self._MaxIndexRange3 \
                 - ((previousIndex // 2) * (previousIndex + 1) if (previousIndex % 2 == 0) else \
                    (((previousIndex - 1) // 2) * previousIndex) + previousIndex) \
-                + (Ai if (self._maxIndexRange3 < 2) else (self._lengthOfB + 1) - Bi)
+                + (ai if (self._MaxIndexRange3 < 2) else (self._LengthOfB + 1) - bi)
         else:
-            raise ValueError(f"Sum of both the element index values must not be greater than {self._maxSumRange3}")
+            raise ValueError(f"Sum of both the element index values must not be greater than {self._MaxSumRange3}")
 
-        if (self._zeroBasedIndex):
-            Index -= 1
+        if (self._ZeroBasedIndex):
+            index -= 1
 
-        return Index
+        return index
 
-    def GetCombination(self, index: int):
-        """Get the pair of combination for given index value
+    def GetElementsAtIndex(self, index: int):
+        """Get the combination pair for given index value.
 
         Args:
-            index: Index value of pair of combination.
+            index: Index value of combination pair.
 
         Returns:
-            Ai: Element index of set A.
-            Bi: Element index of set B.
+            ai: Element index of set A.
+            bi: Element index of set B.
         """
-        if (self._zeroBasedIndex):
+        if (self._ZeroBasedIndex):
             if (index < 0):
                 raise ValueError("Index value must be 0 or more.")
             index += 1
-        else:
-            if (index < 1):
-                raise ValueError("Index value must be 1 or more.")
+        elif (index < 1):
+            raise ValueError("Index value must be 1 or more.")
 
-        Ai: int = 0
-        Bi: int = 0
+        ai: int = 0
+        bi: int = 0
         previousIndex: int
-        Sum: int
+        sum: int
 
-        if (index <= self._maxIndexRange1):
-            Sum = math.ceil((math.sqrt(index * 8 + 1) + 1) / 2)
-            Ai = index - ((Sum - 1) * (Sum - 2) // 2)
-            Bi = Sum - Ai
-        elif (index <= self._maxIndexRange2):
-            Sum = self._maxSumRange1 \
-                + ((index - self._maxIndexRange1) // self._lowerLength) \
-                - (1 if ((index - self._maxIndexRange1) % self._lowerLength == 0) else 0) \
+        if (index <= self._MaxIndexRange1):
+            sum = math.ceil((math.sqrt(index * 8 + 1) + 1) / 2)
+            ai = index - ((sum - 1) * (sum - 2) // 2)
+            bi = sum - ai
+        elif (index <= self._MaxIndexRange2):
+            sum = self._MaxSumRange1 \
+                + ((index - self._MaxIndexRange1) // self._LowerLength) \
+                - (1 if ((index - self._MaxIndexRange1) % self._LowerLength == 0) else 0) \
                 + 1
-            previousIndex = self._maxIndexRange1 + ((Sum - 1 - self._maxSumRange1) * self._lowerLength)
-            if (self._lengthOfA >= self._lengthOfB):
-                Bi = (self._lengthOfB + 1) - (index - previousIndex)
-                Ai = Sum - Bi
+            previousIndex = self._MaxIndexRange1 + ((sum - 1 - self._MaxSumRange1) * self._LowerLength)
+            if (self._LengthOfA >= self._LengthOfB):
+                bi = (self._LengthOfB + 1) - (index - previousIndex)
+                ai = sum - bi
             else:
-                Ai = index - previousIndex
-                Bi = Sum - Ai
-        elif (index <= self._maxIndexRange3):
-            generic_maxSumRange3 = self._maxSumRange3 \
-                - (self._maxSumRange1 if self._maxSumRange2 == 0 else self._maxSumRange2)
-            generic_index = index \
-                - (self._maxIndexRange1 if self._maxIndexRange2 == 0 else self._maxIndexRange2)
-            b = (2 * generic_maxSumRange3) + 1
-            generic_Sum = math.ceil((b - math.sqrt(b * b - 8 * generic_index)) / 2)
-            Sum = (self._maxSumRange1 if self._maxSumRange2 == 0 else self._maxSumRange2) \
+                ai = index - previousIndex
+                bi = sum - ai
+        elif (index <= self._MaxIndexRange3):
+            generic_MaxSumRange3 = self._MaxSumRange3 \
+                - (self._MaxSumRange1 if self._MaxSumRange2 == 0 else self._MaxSumRange2)
+            generic_Index = index \
+                - (self._MaxIndexRange1 if self._MaxIndexRange2 == 0 else self._MaxIndexRange2)
+            b = (2 * generic_MaxSumRange3) + 1
+            generic_Sum = math.ceil((b - math.sqrt(b * b - 8 * generic_Index)) / 2)
+            sum = (self._MaxSumRange1 if self._MaxSumRange2 == 0 else self._MaxSumRange2) \
                 + generic_Sum
-            previousIndex = (self._maxIndexRange1 if self._maxIndexRange2 == 0 else self._maxIndexRange2) \
+            previousIndex = (self._MaxIndexRange1 if self._MaxIndexRange2 == 0 else self._MaxIndexRange2) \
                 + (0 if generic_Sum == 1 else (((generic_Sum - 1) * (b - generic_Sum + 1)) // 2))
-            if (self._maxIndexRange3 >= 2):
-                Bi = (self._lengthOfB + 1) - (index - previousIndex)
-                Ai = Sum - Bi
+            if (self._MaxIndexRange3 >= 2):
+                bi = (self._LengthOfB + 1) - (index - previousIndex)
+                ai = sum - bi
             else:
-                Ai = index - previousIndex
-                Bi = Sum - Ai
+                ai = index - previousIndex
+                bi = sum - ai
         else:
-            raise ValueError(f"Index value must not be greater than {self._maxIndexRange3}")
+            raise ValueError(f"Index value must not be greater than {self._MaxIndexRange3}")
 
-        if (self._zeroBasedIndex):
-            Ai -= 1
-            Bi -= 1
+        if (self._ZeroBasedIndex):
+            ai -= 1
+            bi -= 1
 
-        return Ai, Bi
+        return ai, bi
