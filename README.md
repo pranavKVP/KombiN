@@ -27,23 +27,3 @@ In short, It provides zero and non-zero index based on type of index used in bot
 You can use KombiN for
 1. Finding the Index # of particular combination
 2. Finding the Combination of particular Index #.
-## How to use KombiN?
-```
-// C# Example
-string[] setX = new string[] { "Apple", "Banana", "Cucumber" };
-string[] setY = new string[] { "CEO", "CFO", "CSO" };
-ulong Index02 = KombiN.GetIndex(X: 0, Y: 2,
-                                  XLength: (ulong)(setX.Length),
-                                  YLength: (ulong)(setY.Length),
-                                  zeroBasedIndex: true);
-KombiN.GetCombination(Index: Index02,
-                      XLength: (ulong)(setX.Length),
-                      YLength: (ulong)(setY.Length),
-                      X: out ulong X, Y: out ulong Y,
-                      zeroBasedIndex: true);
-Console.WriteLine($"Index for X:0 (Apple) | Y:2 (CSO) is {Index02}");
-Console.WriteLine($"Combination for Index:{Index02} is X:{setX[X]} | Y:{setY[Y]}");
-/*  Output  */
-Index for X:0 (Apple) | Y:2 (CSO) is 3
-Combination for Index:3 is X:Apple | Y:CSO
-```
