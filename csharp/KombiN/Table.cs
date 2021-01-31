@@ -185,7 +185,7 @@ namespace KombiN
                 {
                     sum = this.MaxSumRange1
                         + ((index - this.MaxIndexRange1) / this.LowerLength)
-                        - (ushort)(((index - this.MaxIndexRange1) % this.LowerLength == 0) ? 1 : 0)
+                        - (((index - this.MaxIndexRange1) % this.LowerLength == 0) ? 1 : 0)
                         + 1;
                     previousIndex = this.MaxIndexRange1 + ((sum - 1 - this.MaxSumRange1) * this.LowerLength);
                     if (this.LengthOfA >= this.LengthOfB)
