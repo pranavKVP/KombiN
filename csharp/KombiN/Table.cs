@@ -57,11 +57,9 @@ namespace KombiN {
                 this.MaxSumRange1 = this.LowerLength + 1;
                 if (difference == 0) {
                     this.MaxIndexRange1 = (product * this.MaxSumRange1) / sum;
-                }
-                else if (difference == 1) {
+                } else if (difference == 1) {
                     this.MaxIndexRange1 = product / 2;
-                }
-                else if (difference >= 2) {
+                } else if (difference >= 2) {
                     this.MaxSumRange2 = higherLength;
                     this.MaxIndexRange1 = (product - this.LowerLength * (sum - 1 - 2 * this.LowerLength)) / 2;
                     this.MaxIndexRange2 = (product + this.LowerLength * (sum - 1 - 2 * this.LowerLength)) / 2;
@@ -88,8 +86,7 @@ namespace KombiN {
                 }
                 ai++;
                 bi++;
-            }
-            else if (ai < 1 || bi < 1) {
+            } else if (ai < 1 || bi < 1) {
                 throw new ArgumentOutOfRangeException(paramName: nameof(ai) + " || " + nameof(bi),
                     message: "Both element index values must be 1 or more.");
             }
@@ -103,20 +100,17 @@ namespace KombiN {
                     index = (previousIndex % 2 == 0 ? (previousIndex / 2) * (previousIndex + 1)
                             : (((previousIndex - 1) / 2) * previousIndex) + previousIndex)
                         + ai;
-                }
-                else if (sum <= this.MaxSumRange2) {
+                } else if (sum <= this.MaxSumRange2) {
                     index = this.MaxIndexRange1
                         + ((sum - (this.MaxSumRange1 + 1)) * this.LowerLength)
                         + (this.LengthOfA < this.LengthOfB ? ai : (this.LengthOfB + 1) - bi);
-                }
-                else if (sum <= this.MaxSumRange3) {
+                } else if (sum <= this.MaxSumRange3) {
                     previousIndex = this.MaxSumRange3 - sum + 1;
                     index = this.MaxIndexRange3
                         - (previousIndex % 2 == 0 ? (previousIndex / 2) * (previousIndex + 1)
                             : (((previousIndex - 1) / 2) * previousIndex) + previousIndex)
                         + (this.MaxIndexRange3 < 2 ? ai : (this.LengthOfB + 1) - bi);
-                }
-                else {
+                } else {
                     throw new ArgumentOutOfRangeException($"Sum of both the element index values must not be greater than {this.MaxSumRange3}");
                 }
             }
@@ -140,8 +134,7 @@ namespace KombiN {
                         message: "Index value must be 0 or more.");
                 }
                 index++;
-            }
-            else if (index < 1) {
+            } else if (index < 1) {
                 throw new ArgumentOutOfRangeException(paramName: nameof(index),
                     message: "Index value must be 1 or more.");
             }
@@ -154,8 +147,7 @@ namespace KombiN {
                     sum = Convert.ToInt64(Math.Ceiling((Math.Sqrt((index * 8) + 1) + 1) / 2));
                     ai = index - ((sum - 1) * (sum - 2) / 2);
                     bi = sum - ai;
-                }
-                else if (index <= this.MaxIndexRange2) {
+                } else if (index <= this.MaxIndexRange2) {
                     sum = this.MaxSumRange1
                         + ((index - this.MaxIndexRange1) / this.LowerLength)
                         - (((index - this.MaxIndexRange1) % this.LowerLength == 0) ? 1 : 0)
@@ -164,13 +156,11 @@ namespace KombiN {
                     if (this.LengthOfA >= this.LengthOfB) {
                         bi = (this.LengthOfB + 1) - (index - previousIndex);
                         ai = sum - bi;
-                    }
-                    else {
+                    } else {
                         ai = index - previousIndex;
                         bi = sum - ai;
                     }
-                }
-                else if (index <= this.MaxIndexRange3) {
+                } else if (index <= this.MaxIndexRange3) {
                     long generic_maxSumRange3 = this.MaxSumRange3 - (this.MaxSumRange2 == 0 ? this.MaxSumRange1 : this.MaxSumRange2);
                     long generic_index = index - (this.MaxIndexRange2 == 0 ? this.MaxIndexRange1 : this.MaxIndexRange2);
                     long b = (2 * generic_maxSumRange3) + 1;
@@ -181,13 +171,11 @@ namespace KombiN {
                     if (this.MaxIndexRange3 >= 2) {
                         bi = (this.LengthOfB + 1) - (index - previousIndex);
                         ai = sum - bi;
-                    }
-                    else {
+                    } else {
                         ai = index - previousIndex;
                         bi = sum - ai;
                     }
-                }
-                else {
+                } else {
                     throw new ArgumentOutOfRangeException(paramName: nameof(index),
                         message: $"Index value must not be greater than {this.MaxIndexRange3}");
                 }

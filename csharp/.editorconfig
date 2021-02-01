@@ -20,6 +20,7 @@ insert_final_newline = false
 dotnet_analyzer_diagnostic.severity = warning
 
 csharp_new_line_before_open_brace = none
+csharp_new_line_before_else = false
 
 # IDE0047: Parentheses can be removed
 dotnet_diagnostic.IDE0047.severity = silent
