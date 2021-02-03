@@ -12,17 +12,17 @@ In above example, both sets have zero-based index so KombiN will have output as 
 
 In short, It provides zero and non-zero index based on type of index used in both sets.
 
-| Index # | X | Y | X+Y | X-Y |  | | Index # | X | Y | X+Y | X-Y |
-| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-|0|0|0|0|0|                      | |1|1|1|2|0|
-|1|0|1|1|-1|                     | |2|1|2|3|-1|
-|2|1|0|1|1|                      | |3|2|1|3|1|
-|3|0|2|2|-2|                     | |4|1|3|4|-2|
-|4|1|1|2|0|                      | |5|2|2|4|0|
-|5|2|0|2|2|                      | |6|3|1|4|2|
-|6|1|2|3|-1|                     | |7|2|3|5|-1|
-|7|2|1|3|1|                      | |8|3|2|5|1|
-|8|2|2|4|0|                      | |9|3|3|9|0|
+| Index # | X | Y |  | | Index # | X | Y |
+| -- | -- | -- | -- | -- | -- | -- | -- |
+|0|0|0|                      | |1|1|1|
+|1|0|1|                     | |2|1|2|
+|2|1|0|                      | |3|2|1|
+|3|0|2|                     | |4|1|3|
+|4|1|1|                      | |5|2|2|
+|5|2|0|                      | |6|3|1|
+|6|1|2|                     | |7|2|3|
+|7|2|1|                      | |8|3|2|
+|8|2|2|                      | |9|3|3|
 
 You can use KombiN for
 1. Finding the Index # of particular combination
