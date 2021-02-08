@@ -2,13 +2,13 @@
 This is the python implementation of KombiN, which is an algorithm to get index for pair of combination or to get pair of combination from index, where all possible pairs of combination from two finite sets are sorted by their weight in ascending order.
 
 ## Installation:
-````
+```py
 pip install KombiN
-````
+```
 
 ## Usage:
 ##### *where set 'A' has 100 elements and set 'B' has 80 elements and both sets has zerobased indexing*.
-````
+```py
 from KombiN import KombiN
 
 
@@ -20,4 +20,4 @@ index = myObj.GetIndex(46, 72)
 # Get pair of combination from index value
 Ai, Bi = myObj.GetCombination(index)
 
-````
+```
