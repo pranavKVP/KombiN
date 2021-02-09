@@ -4,7 +4,7 @@ This is the java implementation of KombiN, which is an algorithm to get index fo
 
 ## Installation
 
-Available on [Maven Central](https://search.maven.org/search?q=ninja.pranav.algorithms:kombin)
+Available on [Maven Central](https://search.maven.org/search?q=g:ninja.pranav.algorithms%20AND%20a:kombin)
 
 ## Usage
 
