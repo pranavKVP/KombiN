@@ -30,7 +30,7 @@
 using System;
 
 [assembly: CLSCompliant(true)]
-namespace kombin {
+namespace Ninja.Pranav.Algorithms.Kombin {
     /// <summary>
     /// Provides a methods to get index of combination pair
     /// and to get combination pair from index value.
