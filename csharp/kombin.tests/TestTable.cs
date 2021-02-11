@@ -3,7 +3,7 @@ using System;
 using Xunit;
 
 [assembly: CLSCompliant(true)]
-namespace KombiN.Tests {
+namespace kombin.tests {
 
     /// <summary>
     /// Tests for Table class.
