@@ -4,12 +4,20 @@ using Xunit;
 
 [assembly: CLSCompliant(true)]
 namespace KombiN.Tests {
-    public class UnitTestTable {
+
+    /// <summary>
+    /// Tests for Table class.
+    /// </summary>
+    public class TestTable {
+
+        /// <summary>
+        /// Rigorous Test :-) All 100 False
+        /// </summary>
         [Fact]
-        public void TestAll60False() {
+        public void TestAll100False() {
             bool result = true;
-            for (int X = 1; X <= 60; X++) {
-                for (int Y = 1; Y <= 60; Y++) {
+            for (int X = 1; X <= 100; X++) {
+                for (int Y = 1; Y <= 100; Y++) {
                     Table myXY = new Table(X, Y, false);
                     for (long i = 1; i <= X * Y; i++) {
                         long ai, bi;
@@ -24,11 +32,14 @@ namespace KombiN.Tests {
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Rigorous Test :-) All 100 True
+        /// </summary>
         [Fact]
-        public void TestAll60True() {
+        public void TestAll100True() {
             bool result = true;
-            for (int X = 1; X <= 60; X++) {
-                for (int Y = 1; Y <= 60; Y++) {
+            for (int X = 1; X <= 100; X++) {
+                for (int Y = 1; Y <= 100; Y++) {
                     Table myXY = new Table(X, Y, true);
                     for (long i = 0; i <= (X * Y) - 1; i++) {
                         long ai, bi;

@@ -1,5 +1,27 @@
+// MIT License
+// 
+// Copyright (c) 2020 Pranavkumar Patel
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
 /// <summary>
-/// KombiN is an algorithm to get index for combination pair or
+/// KombiN is an algorithm to get index for combination pair and
 /// to get combination pair from index, where all possible
 /// combination pairs from two finite sets are sorted by their weight
 /// in ascending order.
@@ -20,6 +42,10 @@ namespace KombiN {
         /// <param name="lengthOfA">Number of elements in first set.</param>
         /// <param name="lengthOfB">Number of elements in second set.</param>
         /// <param name="zeroBasedIndex">True if sets index starts with zero otherwise False.</param>
+        /// <returns><see cref="Table"/> object.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// if <paramref name="lengthOfA" /> or <paramref name="lengthOfB" /> is 0 or less.
+        /// </exception>
         public Table(long lengthOfA, long lengthOfB, bool zeroBasedIndex) {
             if (lengthOfA < 1 || lengthOfB < 1) {
                 throw new ArgumentOutOfRangeException(paramName: nameof(lengthOfA) + " || " + nameof(lengthOfB),
@@ -47,6 +73,10 @@ namespace KombiN {
         /// <summary>
         /// Sets an abstract values useful to get index and combination pair.
         /// </summary>
+        /// <returns>none</returns>
+        /// <exception cref="OverflowException">
+        /// if arithmetic operation resultes in an overflow.
+        /// </exception>
         private void Abstract() {
             checked {
                 this.LowerLength = this.LengthOfA < this.LengthOfB ? this.LengthOfA : this.LengthOfB;
@@ -78,6 +108,12 @@ namespace KombiN {
         /// <param name="ai">Element index of set A.</param>
         /// <param name="bi">Element index of set B.</param>
         /// <returns>Index value for the given combination pair.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// if <paramref name="ai" /> or <paramref name="bi" /> has invalid value.
+        /// </exception>
+        /// <exception cref="OverflowException">
+        /// if arithmetic operation resultes in an overflow.
+        /// </exception>
         public long GetIndexOfElements(long ai, long bi) {
             if (this.ZeroBasedIndex) {
                 if (ai < 0 || bi < 0) {
@@ -127,6 +163,12 @@ namespace KombiN {
         /// </summary>
         /// <param name="index">Index value of combination pair.</param>
         /// <returns>combination pair<returns>
+        /// <exception cref="ArgumentOutOfRangeException">
+        /// if <paramref name="index" /> has invalid value.
+        /// </exception>
+        /// <exception cref="OverflowException">
+        /// if arithmetic operation resultes in an overflow.
+        /// </exception>
         public (long, long) GetElementsAtIndex(long index) {
             if (this.ZeroBasedIndex) {
                 if (index < 0) {
