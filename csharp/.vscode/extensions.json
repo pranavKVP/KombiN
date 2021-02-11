@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "ms-dotnettools.csharp",
+        "davidanson.vscode-markdownlint",
+        "patcx.vscode-nuget-gallery",
+        "visualstudioexptteam.vscodeintellicode"
+    ]
+}
