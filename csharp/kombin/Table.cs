@@ -20,13 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-/// <summary>
-/// KombiN is an algorithm to get index for combination pair and
-/// to get combination pair from index, where all possible
-/// combination pairs from two finite sets are sorted by their weight
-/// in ascending order.
-/// </summary>
-
 using System;
 
 [assembly: CLSCompliant(true)]
@@ -38,7 +31,7 @@ namespace Ninja.Pranav.Algorithms.Kombin {
     public class Table {
         /// <summary>
         /// Initializes a new instance of the <see cref="Table"/> class.
-        /// <summary>
+        /// </summary>
         /// <param name="lengthOfA">Number of elements in first set.</param>
         /// <param name="lengthOfB">Number of elements in second set.</param>
         /// <param name="zeroBasedIndex">True if sets index starts with zero otherwise False.</param>
@@ -59,15 +52,25 @@ namespace Ninja.Pranav.Algorithms.Kombin {
             this.Abstract();
         }
 
+        /// <summary>Length of Set A</summary>
         public long LengthOfA { get; private set; }
+        /// <summary>Length of Set B</summary>
         public long LengthOfB { get; private set; }
+        /// <summary>Lower length of both sets</summary>
         public long LowerLength { get; private set; }
+        /// <summary>Maximum Sum for Range 1</summary>
         public long MaxSumRange1 { get; private set; }
+        /// <summary>Maximum Sum for Range 2</summary>
         public long MaxSumRange2 { get; private set; }
+        /// <summary>Maximum Sum for Range 3</summary>
         public long MaxSumRange3 { get; private set; }
+        /// <summary>Maximum Index for Range 1</summary>
         public long MaxIndexRange1 { get; private set; }
+        /// <summary>Maximum Index for Range 2</summary>
         public long MaxIndexRange2 { get; private set; }
+        /// <summary>Maximum Index for Range 3</summary>
         public long MaxIndexRange3 { get; private set; }
+        /// <summary>Zero based indexing or not</summary>
         public bool ZeroBasedIndex { get; private set; }
 
         /// <summary>
@@ -162,7 +165,7 @@ namespace Ninja.Pranav.Algorithms.Kombin {
         /// Get the combination pair for given index value.
         /// </summary>
         /// <param name="index">Index value of combination pair.</param>
-        /// <returns>combination pair<returns>
+        /// <returns>combination pair</returns>
         /// <exception cref="ArgumentOutOfRangeException">
         /// if <paramref name="index" /> has invalid value.
         /// </exception>
