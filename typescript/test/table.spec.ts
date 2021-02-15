@@ -2,6 +2,9 @@ import { Table } from '../src/index';
 import { expect } from 'chai';
 import 'mocha';
 
+/**
+ * Test All 100 nonZeroIndex
+ */
 describe('Table class - test all 100 nonZero', () => {
     it('should return true', () => {
         let result = true;
@@ -21,6 +24,9 @@ describe('Table class - test all 100 nonZero', () => {
     });
 });
 
+/**
+ * Test All 100 zeroBasedIndex
+ */
 describe('Table class - test all 100 zero', () => {
     it('should return true', () => {
         let result = true;

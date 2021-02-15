@@ -1,14 +1,17 @@
+// Copyright (c) 2020 Pranavkumar Patel. All rights reserved. Licensed under the MIT license.
+
 /**
  * Provides a methods to get index of combination pair
  * and to get combination pair from index value.
  */
 export class Table {
     /**
-     * Initializes a new instance of the @see Table  class.
-     *
+     * Initializes a new instance of the Table  class.
      * @param lengthOfA Number of elements in first set.
      * @param lengthOfB Number of elements in second set.
      * @param zeroBasedIndex True if sets index starts with zero otherwise False.
+     * @returns Table object.
+     * @throws Error if lengthOfA or lengthOfB is 0 or less.
      */
     constructor(lengthOfA: number, lengthOfB: number, zeroBasedIndex: boolean) {
         if (lengthOfA < 1 || lengthOfB < 1) {
@@ -22,18 +25,30 @@ export class Table {
         this.Abstract();
     }
 
+    /** Length of Set A */
     LengthOfA: number;
+    /** Length of Set B */
     LengthOfB: number;
+    /** Lower length of both sets */
     LowerLength!: number;
+    /** Maximum Sum for Range 1 */
     MaxSumRange1: number;
+    /** Maximum Sum for Range 2 */
     MaxSumRange2: number;
+    /** Maximum Sum for Range 3 */
     MaxSumRange3: number;
+    /** Maximum Index for Range 1 */
     MaxIndexRange1: number;
+    /** Maximum Index for Range 2 */
     MaxIndexRange2: number;
+    /** Maximum Index for Range 3 */
     MaxIndexRange3: number;
+    /** Zero based indexing or not */
     ZeroBasedIndex: boolean;
 
-    /**Sets an abstract values useful to get index and combination pair. */
+    /**
+     * Sets an abstract values useful to get index and combination pair.
+     */
     private Abstract(): void {
         this.LowerLength = this.LengthOfA < this.LengthOfB ? this.LengthOfA : this.LengthOfB;
         const higherLength: number = this.LengthOfA > this.LengthOfB ? this.LengthOfA : this.LengthOfB;
@@ -62,6 +77,7 @@ export class Table {
      * @param ai Element index of set A.
      * @param bi Element index of set B.
      * @returns  Index value for the given combination pair.
+     * @throws Error if ai or bi has invalid value.
      */
     public GetIndexOfElements(ai: number, bi: number): number {
         if (this.ZeroBasedIndex) {
@@ -111,6 +127,7 @@ export class Table {
      * Get the combination pair for given index value.
      * @param index Index value of combination pair.
      * @returns  combination pair
+     * @throws Error if index has invalid value.
      */
     public GetElementsAtIndex(index: number): [number, number] {
         if (this.ZeroBasedIndex) {
