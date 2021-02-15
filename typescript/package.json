@@ -1,5 +1,5 @@
 {
-  "name": "ixkombin",
+  "name": "@pranav.ninja/algorithms-kombin",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -7,10 +7,16 @@
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
   },
-  "keywords": [],
+  "keywords": [
+    "index",
+    "combination",
+    "algorithm",
+    "weighted",
+    "discrete mathematics"
+  ],
   "author": "Pranavkumar Patel",
   "license": "MIT",
-  "description": "",
+  "description": "KombiN is an algorithm to get index for combination pair and to get combination pair from index, where all possible combination pairs from two finite sets are sorted by their weight in ascending order.",
   "devDependencies": {
     "@types/chai": "^4.2.14",
     "@types/mocha": "^8.2.0",
@@ -24,5 +30,16 @@
     "prettier": "^2.2.1",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranav-ninja/KombiN.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pranav-ninja/KombiN/issues"
+  },
+  "homepage": "https://github.com/pranav-ninja/KombiN#readme"
 }
