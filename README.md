@@ -8,9 +8,9 @@
 KombiN is an algorithm that gives Index # of weighted combination and back, works with combinations of two finite sets ordered by sum and then by difference of combination, without generating and enumerating through possible combinations.
 ## When to use KombiN?
 Let's say we have two sets:
-> Set X = { Apple = 0, Banana = 1, Cucumber = 2 }
+> Set A = { Apple = 0, Banana = 1, Cucumber = 2 }
 
-> Set Y = { CEO = 0, CFO = 1, CSO = 2 }
+> Set B = { CEO = 0, CFO = 1, CSO = 2 }
 
 Now get all possible unique combinations for both sets and sort first by sum of combination and after by difference of combination and in the end give Index # to all combinations.
 
@@ -18,7 +18,7 @@ In above example, both sets have zero-based index so KombiN will have output as 
 
 In short, It provides zero and non-zero index based on type of index used in both sets.
 
-| Index # | X | Y |  | | Index # | X | Y |
+| Index # | ai | bi |  | | Index # | ai | bi |
 | -- | -- | -- | -- | -- | -- | -- | -- |
 |0|0|0|                      | |1|1|1|
 |1|0|1|                     | |2|1|2|
