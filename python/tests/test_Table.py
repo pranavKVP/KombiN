@@ -1,5 +1,6 @@
+
 import unittest
-from KombiN import Table
+from kombin import Table
 
 
 class TableTest(unittest.TestCase):
@@ -10,11 +11,10 @@ class TableTest(unittest.TestCase):
             for Y in range(1, 31):
                 _X_Y = Table(X, Y, False)
                 for i in range(1, (X * Y) + 1):
-                    Ai, Bi = _X_Y.GetElementsAtIndex(i)
-                    index = _X_Y.GetIndexOfElements(Ai, Bi)
+                    ai, bi = _X_Y.GetElementsAtIndex(i)
+                    index = _X_Y.GetIndexOfElements(ai, bi)
                     if(i != index):
-                        # result = False
-                        raise ValueError(f"i:{i}#index{index} for Ai:{Ai}, Bi:{Bi}")
+                        result = False
         self.assertEqual(result, True)
 
     def test_all_30_true(self):
@@ -23,9 +23,8 @@ class TableTest(unittest.TestCase):
             for Y in range(1, 31):
                 _X_Y = Table(X, Y, True)
                 for i in range(0, (X * Y)):
-                    Ai, Bi = _X_Y.GetElementsAtIndex(i)
-                    index = _X_Y.GetIndexOfElements(Ai, Bi)
+                    ai, bi = _X_Y.GetElementsAtIndex(i)
+                    index = _X_Y.GetIndexOfElements(ai, bi)
                     if(i != index):
-                        # result = False
-                        raise ValueError(f"i:{i}#index{index} for Ai:{Ai}, Bi:{Bi}")
+                        result = False
         self.assertEqual(result, True)
