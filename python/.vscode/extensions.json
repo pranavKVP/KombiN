@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "ms-toolsai.jupyter",
+        "davidanson.vscode-markdownlint",
+        "ms-python.vscode-pylance",
+        "ms-python.python",
+        "visualstudioexptteam.vscodeintellicode",
+        "redhat.vscode-xml"
+    ]
+}

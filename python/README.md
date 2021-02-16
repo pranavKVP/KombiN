@@ -1,23 +1,29 @@
-# KombiN
-This is the python implementation of KombiN, which is an algorithm to get index for pair of combination or to get pair of combination from index, where all possible pairs of combination from two finite sets are sorted by their weight in ascending order.
+# KombiN - Python 3 Library
 
-## Installation:
-```py
-pip install KombiN
+This is the python implementation of KombiN, which is an algorithm to get index for combination pair and to get combination pair from index, where all possible combination pairs from two finite sets are sorted by their weight in ascending order.
+
+## Installation
+
+Available on [pypi](https://pypi.org/project/kombin/)
+
+```diff
+pip install kombin
 ```
 
-## Usage:
-##### *where set 'A' has 100 elements and set 'B' has 80 elements and both sets has zerobased indexing*.
+## Usage
+
+where set 'A' has 100 elements and set 'B' has 80 elements and both sets has zerobased indexing.
+
 ```py
-from KombiN import KombiN
+from kombin import Table
 
+# Initialize object of Table class
+myObj = Table(100, 80, true)
 
-myObj = KombiN(100, 80, True)
+# Get Index value for combination pair(ai: 46, bi: 72)
+index = myObj.GetIndexOfElements(46, 72)
 
-# Get Index value for pair of combination(Ai: 46, Bi: 72)
-index = myObj.GetIndex(46, 72)
-
-# Get pair of combination from index value
-Ai, Bi = myObj.GetCombination(index)
+# Get combination pair from index value
+ai, bi = myObj.GetElementsAtIndex(index);
 
 ```
