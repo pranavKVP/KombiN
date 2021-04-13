@@ -15,7 +15,7 @@ where set 'A' has 100 elements and set 'B' has 80 elements and both sets has zer
 import ninja.pranav.algorithms.kombin;
 
 // Initialize object of Table class
-Table myObj = Table(100, 80, true);
+Table myObj = new Table(100, 80, true);
 
 // Get Index value for combination pair(ai: 46, bi: 72)
 long index = myObj.GetIndexOfElements(46, 72);
